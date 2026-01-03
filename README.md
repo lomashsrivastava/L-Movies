@@ -1,7 +1,7 @@
 # L-Movies Platform 🎬
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/deploy-status)](https://l-movies-platform.netlify.app)
-**🔴 Live Demo (Netlify):** [https://l-movies-platform.netlify.app](https://l-movies-platform.netlify.app)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/deploy-status)](https://lmovies2026.netlify.app)
+**🔴 Live Demo (Netlify):** [https://lmovies2026.netlify.app](https://lmovies2026.netlify.app)
 **🟢 Live Demo (GitHub Pages):** [https://lomashsrivastava.github.io/L-Movies/](https://lomashsrivastava.github.io/L-Movies/)
 
 ## 🚀 Overview
