@@ -13,7 +13,7 @@ const Home = () => {
                     <h1 className="text-4xl font-extrabold text-red-600 tracking-tighter cursor-pointer" onClick={() => window.location.reload()}>L-MOVIES</h1>
 
                     {/* Admin Link (Desktop) */}
-                    <a href="http://localhost:8001/admin" target="_blank" rel="noopener noreferrer" className="hidden md:block text-gray-300 hover:text-white text-xs font-bold border border-gray-500 px-3 py-1 rounded hover:bg-white/10 transition">
+                    <a href={`${import.meta.env.VITE_API_URL}/admin`} target="_blank" rel="noopener noreferrer" className="hidden md:block text-gray-300 hover:text-white text-xs font-bold border border-gray-500 px-3 py-1 rounded hover:bg-white/10 transition">
                         ADMIN
                     </a>
                 </div>

@@ -78,7 +78,7 @@ const Navbar = () => {
 
                 <div className="flex items-center gap-6 text-white">
                     <div className="hidden md:flex items-center gap-2">
-                        <a href="http://localhost:8001/admin" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-bold bg-white/10 hover:bg-red-600 px-3 py-1.5 rounded-full border border-white/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(220,38,38,0.6)]">
+                        <a href={`${import.meta.env.VITE_API_URL}/admin`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-xs font-bold bg-white/10 hover:bg-red-600 px-3 py-1.5 rounded-full border border-white/20 transition-all duration-300 hover:shadow-[0_0_15px_rgba(220,38,38,0.6)]">
                             <FaTools /> ADMIN PANEL
                         </a>
                     </div>
@@ -99,7 +99,7 @@ const Navbar = () => {
                 <Link to="/" className="flex flex-col items-center gap-1 active:text-white">Home</Link>
                 <Link to="/movies" className="flex flex-col items-center gap-1 active:text-white">Browse</Link>
                 <Link to="/watchlist" className="flex flex-col items-center gap-1 active:text-white">My List</Link>
-                <a href="http://localhost:8001/admin" className="flex flex-col items-center gap-1 active:text-white text-red-500">Admin</a>
+                <a href={`${import.meta.env.VITE_API_URL}/admin`} className="flex flex-col items-center gap-1 active:text-white text-red-500">Admin</a>
             </div>
         </nav>
     );

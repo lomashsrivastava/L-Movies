@@ -24,7 +24,7 @@ const MovieGrid = ({ genre, filterType, searchQuery }) => {
         const fetchMovies = async () => {
             setLoading(true);
             try {
-                let url = 'http://localhost:8001/api/movies/';
+                let url = `${import.meta.env.VITE_API_URL}/api/movies/`;
                 const params = new URLSearchParams();
 
                 if (genre) params.append('genre', genre);
