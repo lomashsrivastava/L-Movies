@@ -1,13 +1,21 @@
-FROM python:3.11-slim
+FROM python:3.10-slim
 
-WORKDIR /app
-
+# Set environment variables
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-COPY requirements.txt .
-RUN pip install --upgrade pip && pip install -r requirements.txt
+# Set work directory
+WORKDIR /app
 
-COPY . .
+# Install dependencies
+COPY requirements.txt /app/
+RUN pip install --no-cache-dir -r requirements.txt
 
-CMD ["gunicorn", "--bind", "0.0.0.0:8000", "core.wsgi:application"]
+# Copy project
+COPY . /app/
+
+# Collect static files
+RUN python manage.py collectstatic --noinput
+
+# Run server
+CMD ["gunicorn", "core.wsgi:application", "--bind", "0.0.0.0:8000"]
