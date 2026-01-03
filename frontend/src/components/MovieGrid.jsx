@@ -40,34 +40,43 @@ const MovieGrid = ({ genre, filterType, searchQuery }) => {
                     }
                 }
 
-                // If filterType is 'new', we rely on default ordering (created_at desc) which the view already does.
-
                 const response = await axios.get(`${url}?${params.toString()}`);
 
-                const apiMovies = response.data.map(movie => ({
-                    id: movie.id,
-                    title: movie.title,
-                    year: movie.year,
-                    rating: movie.rating,
-                    description: movie.description,
-                    match: `${Math.floor(movie.rating * 10)}% Match`,
-                    img: movie.poster_url,
-                    genres: movie.genres && movie.genres.length > 0 ? movie.genres : ['Unknown'],
-                    downloadLink: movie.download_url,
-                    trailer: movie.trailer_url,
-                    screenshots: [
-                        movie.screenshot_1,
-                        movie.screenshot_2,
-                        movie.screenshot_3,
-                        movie.screenshot_4,
-                        movie.screenshot_5
-                    ].filter(Boolean)
-                }));
+                let apiMovies = [];
+                if (response.data && response.data.length > 0) {
+                    apiMovies = response.data.map(movie => ({
+                        id: movie.id,
+                        title: movie.title,
+                        year: movie.year,
+                        rating: movie.rating,
+                        description: movie.description,
+                        match: `${Math.floor(movie.rating * 10)}% Match`,
+                        img: movie.poster_url,
+                        genres: movie.genres && movie.genres.length > 0 ? movie.genres : ['Unknown'],
+                        downloadLink: movie.download_url,
+                        trailer: movie.trailer_url,
+                        screenshots: [
+                            movie.screenshot_1,
+                            movie.screenshot_2,
+                            movie.screenshot_3,
+                            movie.screenshot_4,
+                            movie.screenshot_5
+                        ].filter(Boolean)
+                    }));
+                }
 
-                setMovies(apiMovies);
+                // FORCE PLACEHOLDERS IF EMPTY (To avoiding empty UI)
+                if (apiMovies.length === 0 && !searchQuery) {
+                    console.log("No movies found from API, using Placeholders");
+                    setMovies(generatePlaceholders(10));
+                } else {
+                    setMovies(apiMovies);
+                }
+
             } catch (error) {
                 console.error("Error fetching movies:", error);
-                setMovies([]);
+                // Fallback to placeholders on error
+                setMovies(generatePlaceholders(10));
             } finally {
                 setLoading(false);
             }

@@ -11,19 +11,29 @@ const Banner = () => {
                 const response = await axios.get(`${import.meta.env.VITE_API_URL}/api/movies/?featured=true`);
                 const movies = response.data;
                 if (movies.length > 0) {
-                    // Pick a random featured movie
                     const randomMovie = movies[Math.floor(Math.random() * movies.length)];
                     setMovie(randomMovie);
+                } else {
+                    throw new Error("No featured movies");
                 }
             } catch (error) {
-                console.error("Error fetching banner movie:", error);
+                console.error("Error fetching banner movie, using fallback:", error);
+                // Fallback Banner
+                setMovie({
+                    title: "L-Movies Original",
+                    description: "Experience the best cinematic universe with our curated collection of box office hits and exclusive premieres.",
+                    year: "2025",
+                    rating: 9.8,
+                    poster_url: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop",
+                    screenshot_1: "https://images.unsplash.com/photo-1626814026160-2237a95fc5a0?q=80&w=2070&auto=format&fit=crop"
+                });
             }
         };
 
         fetchFeatured();
     }, []);
 
-    if (!movie) return null; // Or a skeleton loader if preferred
+    if (!movie) return null;
 
     // Use screenshot_1 for the wide banner look, fallback to poster
     const backImage = movie.screenshot_1 || movie.poster_url;
