@@ -85,3 +85,12 @@ A fully functional, modern, animated, and responsive movie website inspired by N
 - `backend/apps/`: Django apps (movies, users, watchlist)
 
 Designed And Developed By Lomash Srivastava
+
+
+![Stars](https://img.shields.io/github/stars/lomashsrivastava/=social)
+![Forks](https://img.shields.io/github/forks/lomashsrivastava/=social)
+
+
+## ?? Screenshots
+Add screenshots here (./screenshots folder)
+
