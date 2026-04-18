@@ -83,3 +83,5 @@ A fully functional, modern, animated, and responsive movie website inspired by N
 - `frontend/`: React application
 - `backend/`: Django application
 - `backend/apps/`: Django apps (movies, users, watchlist)
+
+Designed And Developed By Lomash Srivastava
